@@ -9,7 +9,7 @@ if [[ ! -e walk-results ]]; then
 mkdir -p walk-results
 fi
 while read F ; do
-WALK=$(snmpwalk -v $SNMPVER -c $COMSTR $F $SNMPMIB | grep "STRING:" |  cut -d " " -f 4)
+WALK=$(snmpwalk -v $SNMPVER -c $COMSTR $F $SNMPMIB | cut -d " " -f 4)
 echo "$F $WALK" >> walk-results/WalksysName-$WALKFILE
 done <$WALKFILE
 echo ""
